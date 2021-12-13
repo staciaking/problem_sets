@@ -81,7 +81,7 @@ The researchers have made a column called `DoNotUse` based on their exclusion cr
 
 ```{r}
 filtered_d = d %>% 
-  filter(is.na(DoNotUse))  # your code here: exclude subjects that are marked as "DoNotUse"
+  filter(is.na(DoNotUse))  # your code here: exclude subjects that are marked as "DoNotUse" aka keeps subject not marked "DoNotUse"
 ```
 
 It's good practice to assign a new variable name (in this case `filtered_d`) to a data frame when you change it in an important way, or apply a code chunk that shouldn't be run twice. This helps prevent you seeing different results when you run your code in chunks (and might run one multiple times, or skip it, etc.) vs. knit the document.

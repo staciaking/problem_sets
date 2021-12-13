@@ -22,22 +22,40 @@ fvs <- read_csv("data/FVS2011-hands.csv")
 ```
 
 First, use `ggplot` to plot a histogram of the ages of children in the study. NOTE: this is a repeated measures design, so you can't just take a histogram of every measurement. 
+```{r}
+
+```
 
 ```{r}
+histData <- fvs  %>% 
+  group_by(subid)  %>%  
+  filter(duplicated(age))
+
+histogram <- ggplot(data = histData,
+                    mapping = aes(x = age))
+histogram + geom_histogram()+
+  labs(title = "Ages of Children in Study", x = "Age (in Months)")
 ```
 
 Second, make a scatter plot showing hand looking as a function of age and condition. Add appropriate smoothing lines. Take the time to fix the axis labels and make the plot look nice.
 
 ```{r}
+scatter <- ggplot(data = fvs,
+                  mapping = aes(x = age,
+                                y = hand.look))
+scatter + geom_point()+
+  geom_smooth(method = "lm") +
+  labs(x = "Age (in Months)", y = "Time Spent Looking at Hands")
+
 ```
 
 What do you conclude from this pattern of data?
 
-> ANSWER HERE
+> The older children are the more likely they are to spend more time looking at hands in videos.
 
 What statistical analyses would you perform here to quantify these differences?
 
-> ANSWER HERE
+> I am not sure.
 
 
 # Part 2: Simulation
